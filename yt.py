@@ -37,7 +37,7 @@ def download():
                 video = yt.streams.filter(only_audio = True).first()
 
             else:
-                video = yt.streams.filter(only_audio = False).first()
+                video = yt.streams.get_highest_resolution()
 
             out_file = video.download(output_path = destination)
             base, ext = os.path.splitext(out_file)
